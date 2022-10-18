@@ -1,2 +1,2 @@
 # Cell-IDpy
-Python implementation of Cell-ID (https://github.com/RausellLab/CelliD)
+Python implementation of Cell-ID (https://github.com/RausellLab/CelliD) for Scanpy users
