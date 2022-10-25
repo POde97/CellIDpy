@@ -13,6 +13,10 @@ class CellID():
 
 		
     self.n = ngenesxcell
+    if scipy.sparse.issparse(ad.X)== True:
+      X = pd.DataFrame.sparse.from_spmatrix(ad.X.T,index =ad.var_names, columns=ad.obs.index)
+    else:  
+      X = pd.DataFrame(ad.X.T,index =ad.var_names, columns=ad.obs.index )
     self.X = pd.DataFrame(ad.X.T,index =ad.var_names, columns=ad.obs.index )
 
     self.X = self.X.loc[self.X.var(axis=1) !=0]
