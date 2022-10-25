@@ -1,6 +1,8 @@
 import scipy.stats as stats
 import mapply
 import scanpy as sc
+import pandas as pd
+import numpy as np
 mapply.init(
     n_workers=-1,
     chunk_size=1,
