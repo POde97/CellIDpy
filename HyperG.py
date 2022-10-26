@@ -30,9 +30,11 @@ class Hypergeom(object):
     dummies.index = list(c.index)
       
     #Distance adata
+    self.Lsad = len(adata.obs["signature"].iloc[0])
+    print(self.Lsad)
     Distance1 = pd.DataFrame(self.GeneCellDistance(ad.obsm["X_MCA"].T,ad.varm["GenesCoordinates"]),columns=ad.var_names,index=ad.obs.index)
     #Indicator matrix1
-    Distance1 = Distance1.mask(Distance1.rank(axis=1, method='max', ascending=True) > 200, 0)
+    Distance1 = Distance1.mask(Distance1.rank(axis=1, method='max', ascending=True) > self.Lsad, 0)
     Distance1 = Distance1.mask(Distance1!=0,1)
 
     #Allineate dummy and matrix 1
@@ -55,8 +57,7 @@ class Hypergeom(object):
     
     if NUniverse == None:
       self.NUniverse = np.shape(Distance1)[1]
-      print(self.NUniverse)
-      print(len(Distance1.columns.unique()))
+      
     else:
       self.NUniverse = NUniverse 
       
@@ -96,7 +97,7 @@ class Hypergeom(object):
     #lst3 = [value for value in lst1 if value in lst2]
     g = 200 ## Number of submitted genes
     k = x[0] ## Size of the selection, i.e. submitted genes with at least one annotation in GO biological processes
-    m = 200 ## Number of "marked" elements, i.e. genes associated to this biological process
+    m = self.Lsad ## Number of "marked" elements, i.e. genes associated to this biological process
     N = int(self.NUniverse) ## Total number of genes with some annotation in GOTERM_BP_FAT.
     n = N - m ## Number of "non-marked" elements, i.e. genes not associated to this biological process
     x = x[1:]## Number of "marked" elements in the selection, i.e. genes of the group of interest that are associated to this biological process
