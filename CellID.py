@@ -13,11 +13,12 @@ class CellID():
 
 		
     self.n = ngenesxcell
+    self.ad = ad 
     if scipy.sparse.issparse(ad.X)== True:
-      X = pd.DataFrame.sparse.from_spmatrix(ad.X.T,index =ad.var_names, columns=ad.obs.index)
+      self.X = pd.DataFrame.sparse.from_spmatrix(self.ad.X.T,index =self.ad.var_names, columns=self.ad.obs.index)
     else:  
-      X = pd.DataFrame(ad.X.T,index =ad.var_names, columns=ad.obs.index )
-    self.X = pd.DataFrame(ad.X.T,index =ad.var_names, columns=ad.obs.index )
+      self.X = pd.DataFrame(self.ad.X.T,index =self.ad.var_names, columns=self.ad.obs.index )
+    #self.X = pd.DataFrame(ad.X.T,index =ad.var_names, columns=ad.obs.index )
 
     self.X = self.X.loc[self.X.var(axis=1) !=0]
     bool_series = self.X.index.duplicated(keep = False)
@@ -79,8 +80,9 @@ class CellID():
     return self.Dist
 
   def XcellGeneS(self):
-    df = pd.DataFrame(self.Dist,columns =ad.var_names, index=ad.obs.index )
+    df = pd.DataFrame(self.Dist,columns =self.ad.var_names, index=self.ad.obs.index )
     self.signaturedf = pd.DataFrame(df.apply(lambda x: x.nsmallest(int(self.n)).index.tolist(), axis=1),columns=["signature"])
 
     return self.signaturedf
+
 
