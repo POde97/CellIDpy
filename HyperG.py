@@ -4,6 +4,7 @@ import scanpy as sc
 import pandas as pd
 import numpy as np
 import scanpy as sc
+import scipy
 mapply.init(
     n_workers=-1,
     chunk_size=1,
