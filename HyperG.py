@@ -25,7 +25,7 @@ class Hypergeom(object):
 
     #Distance adata
     self.Lsad = len(ad.obs["signature"].iloc[0])
-    print(self.Lsad)
+    
     Distance1 = pd.DataFrame(self.GeneCellDistance(ad.obsm["X_MCA"].T,ad.varm["GenesCoordinates"]),columns=ad.var_names,index=ad.obs.index)
     #Indicator matrix1
     Distance1 = Distance1.mask(Distance1.rank(axis=1, method='max', ascending=True) > self.Lsad, 0)
