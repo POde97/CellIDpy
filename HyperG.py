@@ -82,7 +82,7 @@ class Hypergeom(object):
 
     self.Intersection = Intersection.mapply(lambda x: self.HyperG(x))
     self.Intersection.index = Distance1.index
-    self.Intersection = -np.log10(self.Intersection.apply(lambda x: self.BHcorrection(x),axis=1))
+    self.Intersection = -np.log10(self.Intersection.apply(lambda x: self.BHcorrection(x)))
     #self.Intersection = self.Intersection.apply(lambda x: self.BHcorrection(x),axis=1)
 
      
