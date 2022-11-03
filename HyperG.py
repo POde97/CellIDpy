@@ -5,12 +5,12 @@ import pandas as pd
 import numpy as np
 import scanpy as sc
 import scipy
-#mapply.init(
- #   n_workers=-1,
-  #  chunk_size=1,
-  #  max_chunks_per_worker=16,
-  #  progressbar=True
-#)
+mapply.init(
+    n_workers=-1,
+    chunk_size=1,
+    max_chunks_per_worker=16,
+    progressbar=True
+)
 class Hypergeom(object):
   def __init__(self,ad,reference,prediction = True,NUniverse = None ):
 
