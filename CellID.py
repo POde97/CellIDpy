@@ -34,7 +34,7 @@ class CellID():
     print("Computing SVD")
     U,s,self.V = randomized_svd(self.FM.to_numpy(), 
                               n_components=50,
-                              n_iter=50,
+                              algorithm = "arpack",
                               random_state=None)
     print("Computing coordinates")
     self.CoordinatesCell,self.CoordinatesGenes = self.MCAStep2()
