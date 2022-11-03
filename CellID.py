@@ -37,7 +37,7 @@ class CellID():
      #                         n_components=50,
       #                        random_state=None)
 
-    U,s,self.V = svds(self.FM.to_numpy())
+    U,s,self.V = svds(self.FM.to_numpy(),k=50)
     print("Computing coordinates")
     self.CoordinatesCell,self.CoordinatesGenes = self.MCAStep2()
     print("Computing Cell-Genes Distances")
