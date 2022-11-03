@@ -5,6 +5,13 @@ import pandas as pd
 import numpy as np
 import scanpy as sc
 import scipy
+import scipy.stats as stats
+import mapply
+import scanpy as sc
+import pandas as pd
+import numpy as np
+import scanpy as sc
+import scipy
 mapply.init(
     n_workers=-1,
     chunk_size=1,
@@ -75,8 +82,8 @@ class Hypergeom(object):
 
     self.Intersection = Intersection.mapply(lambda x: self.HyperG(x))
     self.Intersection.index = Distance1.index
-    self.Intersection = -np.log10(self.Intersection.apply(lambda x: self.BHcorrection(x)))
-
+    self.Intersection = -np.log10(self.Intersection.apply(lambda x: self.BHcorrection(x),axis=1))
+    #self.Intersection = self.Intersection.apply(lambda x: self.BHcorrection(x),axis=1)
 
      
     pred = pd.DataFrame(self.Intersection.apply(lambda x: x.nlargest(1).index.tolist()[0], axis=1),columns=["gs_prediction"])
@@ -122,6 +129,7 @@ class Hypergeom(object):
 
 
   def BHcorrection(self,x):
-    d = x.sort_values(ascending = False)*len(x)
+    d = x.sort_values()*len(x)#
     x = d/pd.DataFrame([i for i in range(1,len(d)+1)],index = d.index)[0]
+    x[x>1.] = 1.
     return x
