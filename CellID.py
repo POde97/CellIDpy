@@ -6,6 +6,7 @@ from sklearn.utils.extmath import randomized_svd
 from scipy.spatial import distance
 import scipy
 import heapq
+from scipy.sparse.linalg import svds
 
 class CellID():
 
@@ -32,9 +33,11 @@ class CellID():
     print("Computing Fuzzy Matrix")
     self.Dc,self.Z,self.FM = self.MCAStep1()
     print("Computing SVD")
-    U,s,self.V = randomized_svd(self.FM.to_numpy(), 
-                              n_components=50,
-                              random_state=None)
+    #U,s,self.V = randomized_svd(self.FM.to_numpy(), 
+     #                         n_components=50,
+      #                        random_state=None)
+
+    U,s,self.V = svds(self.FM.to_numpy())
     print("Computing coordinates")
     self.CoordinatesCell,self.CoordinatesGenes = self.MCAStep2()
     print("Computing Cell-Genes Distances")
