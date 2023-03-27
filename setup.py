@@ -11,6 +11,7 @@ setup(
     license='MIT license',
     packages=['CellIDpy'],
     install_requires=['mapply==0.1.21',
-                      'scanpy==1.9.3',                     
+                      'scanpy==1.9.3',
+                      'statsmodels'
                       ],
 )
