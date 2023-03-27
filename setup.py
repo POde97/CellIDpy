@@ -7,7 +7,7 @@ setup(
     url='https://github.com/POde97/CellIDpy',
     author='Paolo Odello',
     author_email='paoloodeo.o@gmail.com',
-    package_data={'CellIDpy': ['HgProteinCoding', 'MegProteinCoding']}
+    package_data={'CellIDpy': ['HgProteinCoding', 'MgProteinCoding']}
     license='MIT license',
     packages=['CellIDpy'],
     install_requires=['mapply==0.1.21',
