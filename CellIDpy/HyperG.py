@@ -8,7 +8,7 @@ import numpy as np
 import scipy
 import mapply
 import torch
-
+import warnings
 #Arguments:
 #ad : anndata object of single cell dataset   
 #reference: pandas dataframe (reference gene list) or anndata object for label transfer between dataset 
@@ -20,6 +20,9 @@ import torch
 #adj_pval: if true correct Pvalue for multiple testing with Benjamini and Hochberg correction
 #log_trans: if true -log10(Pvalue) 
 #mply_p: max_chunks_per_worker of mapply parallelization https://pypi.org/project/mapply/
+
+
+warnings.filterwarnings("ignore", category=RuntimeWarning)
 
 
 class Hypergeom(object):
