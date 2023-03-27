@@ -4,7 +4,7 @@ setup(
     name='CellIDpy',
     version='1.0',    
     description='mca based method for cell type labeling',
-    url=https://github.com/POde97/CellIDpy,
+    url='https://github.com/POde97/CellIDpy',
     author='Paolo Odello',
     author_email='paoloodeo.o@gmail.com',
     license='MIT license',
