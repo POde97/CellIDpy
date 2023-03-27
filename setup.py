@@ -8,7 +8,7 @@ setup(
     author='Paolo Odello',
     author_email='paoloodeo.o@gmail.com',
     license='MIT license',
-    packages=['CellID'],
+    packages=['Cell-IDpy'],
     install_requires=['mapply==0.1.21',
                       'scanpy==1.9.3',                     
                       ],
