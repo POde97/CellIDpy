@@ -22,12 +22,12 @@ warnings.simplefilter(action='ignore', category=pd.errors.PerformanceWarning)
 
 class CellID():
 
-  def __init__(self, ad,ngenesxcell=200,dim=50,verbose = True,group_key=None):
-    
+  def __init__(self, ad,ngenesxcell=200,dim=50,verbose = True):
+    #,group_key=None
     self.n = ngenesxcell
     self.ad = ad.copy() 
-    if group_key !=None:
-      self.clusterS = list(ad.obs[group_key])
+    #if group_key !=None:
+      #self.clusterS = list(ad.obs[group_key])
 
     if scipy.sparse.issparse(self.ad.X)== True:
       self.X = pd.DataFrame.sparse.from_spmatrix(self.ad.X.T,index =self.ad.var_names, columns=self.ad.obs.index).copy()
@@ -129,9 +129,9 @@ class CellID():
     
     return self.signaturedf   
 
-  def XclusterGeneS(self):
+  def XclusterGeneS(self,group_key):
       
-    
+    self.clusterS = list(self.ad.obs[group_key])
     Dist = scipy.spatial.distance_matrix(self.cellC.T.astype(np.double), self.FeaturesCoordinates.astype(np.double), p=2)
     df = pd.DataFrame(self.Dist,columns =self.X.index, index=self.X.columns )
 
