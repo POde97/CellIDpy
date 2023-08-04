@@ -11,6 +11,10 @@ import numpy as np
 
 
 
+#from CellIDpy import mcaplot
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 def MCAplot(ciD,cell_type_attr,genep=[]):
   fig,ax = plt.subplots(figsize=(8, 8))
   #genep = ["CTRL", "INS", "MYZAP", "CDH11"]
@@ -21,7 +25,13 @@ def MCAplot(ciD,cell_type_attr,genep=[]):
   cmap = ["blue","grey","green","yellow","orange","red","purple","brown",
           "plum","slategray","tan","floralwhite","sandybrown",
           "rosybrown","gold","olivedrab"]
-  cmapz = cmap[:ciD.ad.obs[cell_type_attr].nunique()]
+  #if ciD.ad.obs[cell_type_attr].nunique() < len(cmap):
+   # cmapz = cmap[:ciD.ad.obs[cell_type_attr].nunique()]
+  #else:
+  colors = sns.hls_palette(ciD.ad.obs[cell_type_attr].nunique())
+
+
+  cmapz = colors.as_hex()
 
   colorr = list(ciD.ad.obs[cell_type_attr].map(dict(zip(list(ciD.ad.obs["cell.type"].unique()),cmapz))))
   ax.scatter(ciD.ad.obsm['X_MCA'][:,0],ciD.ad.obsm['X_MCA'][:,1],3,c=colorr)
@@ -39,7 +49,8 @@ def MCAplot(ciD,cell_type_attr,genep=[]):
 
   plt.ylabel("mca_2")
   plt.xlabel("mca_1")
-  
+#mcaplot.
+MCAplot(cID,"cell.type",genep = ["PAX6", "SOX18"])  
   
   
   
