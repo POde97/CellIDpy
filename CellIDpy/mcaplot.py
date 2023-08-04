@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import seaborn as sns
 #MCA plot
 #Simoultaneous plot of genes and cell in MCA space
 
