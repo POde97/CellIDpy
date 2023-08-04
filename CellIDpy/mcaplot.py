@@ -49,8 +49,9 @@ def MCAplot(ciD,cell_type_attr,genep=[]):
 
   plt.ylabel("mca_2")
   plt.xlabel("mca_1")
-#mcaplot.
-MCAplot(cID,"cell.type",genep = ["PAX6", "SOX18"])  
+
+
+#mcaplot.MCAplot(cID,"cell.type",genep = ["PAX6", "SOX18"])  
   
   
   
